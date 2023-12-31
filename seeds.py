@@ -34,7 +34,7 @@ for review in restaurant_reviews:
     print(f"Review ID: {review.id}, Rating: {review.rating}")
 
 
-restaurant_customers = restaurant1.customers
+restaurant_customers = restaurant1.all_reviews
 for customer in restaurant_customers:
     print(f"Customer: {customer.full_name()}")
 
