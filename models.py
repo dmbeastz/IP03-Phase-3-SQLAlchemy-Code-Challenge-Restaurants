@@ -1,4 +1,3 @@
-# models.py
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, desc
 from sqlalchemy.orm import relationship, declarative_base, sessionmaker
 
@@ -11,7 +10,6 @@ class Customer(Base):
     first_name = Column(String)
     last_name = Column(String)
     
-    # Define the relationship
     reviews = relationship("Review", back_populates="customer")
 
     def full_name(self):
@@ -37,7 +35,6 @@ class Restaurant(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
-    # Define the relationship
     reviews = relationship("Review", back_populates="restaurant")
 
     def all_reviews(self, session):
@@ -60,7 +57,6 @@ class Review(Base):
     customer_id = Column(Integer, ForeignKey('customers.id'))
     restaurant_id = Column(Integer, ForeignKey('restaurants.id'))
 
-    # Define the reverse relationships
     customer = relationship("Customer", back_populates="reviews")
     restaurant = relationship("Restaurant", back_populates="reviews")
     
